@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../../"
+		}
+	],
+	"settings": {
+		"debug.onTaskErrors": "debugAnyway",
+		"workspace.samplePath": "./samples/products/sle_measure_dis",
+		"CodeCheck.TaskIdsUpdateTime": "2024-03-21 20:39:15",
+		"CodeCheck.TaskIdsForRemoteUrl": "",
+		"CodeCheck.TaskIdsForRemoteBranch": "",
+		"CodeCheck.TaskIds": "",
+		"CodeCheck.SubRepoTaskIdsInfo": {}
+	}
+}
