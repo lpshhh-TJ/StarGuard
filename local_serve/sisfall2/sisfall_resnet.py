@@ -1,4 +1,4 @@
-# Copyright 2026 pzihan. Licensed under the MIT License.
+## Copyright 2026 pzihan. Licensed under the MIT License.
 
 import mindspore
 import mindspore.nn as nn

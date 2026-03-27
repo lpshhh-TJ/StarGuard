@@ -452,7 +452,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--host", type=str, default="127.0.0.1")
     parser.add_argument("--port", type=int, default=5000)
-    parser.add_argument("--ckpt", type=str, default="distance.ckpt")
+    parser.add_argument("--ckpt", type=str, default=str(Path(__file__).parent / "distance.ckpt"))
     parser.add_argument("--file", type=str, help="Run Batch Mode if provided")
     parser.add_argument("--output_dir", type=str, default="output_npy")
     parser.add_argument("--forward-host", type=str, default="127.0.0.1", help="Forward results to another host")

@@ -1,5 +1,6 @@
 # Copyright 2026 lpshhh-TJ. Licensed under the MIT License.
 
+import logging
 import numpy as np
 import mindspore
 from mindspore import nn, ops, save_checkpoint # 导入保存接口
@@ -125,8 +126,8 @@ def train(model, dataset, loss_fn, optimizer, epochs: int = 1, log_interval: int
     loss_cb = LossMonitor(per_print_times=log_interval)
     time_cb = TimeMonitor(data_size=dataset.get_dataset_size())
 
-    print(f"Starting training on Ascend...")
-    print(f"Total steps per epoch: {dataset.get_dataset_size()}")
+    logging.info(f"Starting training on Ascend...")
+    logging.info(f"Total steps per epoch: {dataset.get_dataset_size()}")
 
     # 早停相关变量
     best_val_loss = float('inf')
@@ -138,8 +139,8 @@ def train(model, dataset, loss_fn, optimizer, epochs: int = 1, log_interval: int
         train_net.train(epochs, dataset, callbacks=[ckpoint_cb, loss_cb, time_cb], dataset_sink_mode=True)
     else:
         # 有验证集时，手动逐epoch训练以支持早停和学习率动态调整
-        print(f"Training with early stopping (patience={early_stopping_patience})...")
-        print(f"Learning rate scheduler: ReduceLROnPlateau (factor=0.5, patience=3)")
+        logging.info(f"Training with early stopping (patience={early_stopping_patience})...")
+        logging.info(f"Learning rate scheduler: ReduceLROnPlateau (factor=0.5, patience=3)")
 
         # ReduceLROnPlateau 参数
         lr_scheduler_patience = 3  # 验证集loss 3轮不下降则降低学习率
@@ -163,8 +164,6 @@ def train(model, dataset, loss_fn, optimizer, epochs: int = 1, log_interval: int
             val_metrics = test(model, val_dataset, loss_fn, label_scale=1.0)
             val_loss = val_metrics.get("loss", float('inf'))
 
-            print(f"Epoch {epoch+1}/{epochs} - Val Loss: {val_loss:.6f} - LR: {current_lr:.2e}", end="")
-
             # ReduceLROnPlateau 逻辑
             if val_loss < best_val_loss:
                 best_val_loss = val_loss
@@ -173,11 +172,11 @@ def train(model, dataset, loss_fn, optimizer, epochs: int = 1, log_interval: int
                 scheduler_patience_counter = 0
                 # 保存最佳模型
                 save_checkpoint(model, save_path)
-                print(" [New best model saved]")
+                logging.info(f"Epoch {epoch+1}/{epochs} - Val Loss: {val_loss:.6f} - LR: {current_lr:.2e} [New best model saved]")
             else:
                 patience_counter += 1
                 scheduler_patience_counter += 1
-                print(f" [No improvement for {patience_counter}/{early_stopping_patience} epochs]")
+                logging.info(f"Epoch {epoch+1}/{epochs} - Val Loss: {val_loss:.6f} - LR: {current_lr:.2e} [No improvement for {patience_counter}/{early_stopping_patience} epochs]")
 
                 # 如果连续 scheduler_patience_counter 轮验证loss不下降，降低学习率
                 if scheduler_patience_counter >= lr_scheduler_patience and current_lr > min_lr:
@@ -186,13 +185,13 @@ def train(model, dataset, loss_fn, optimizer, epochs: int = 1, log_interval: int
                     # 更新学习率 Parameter 的值
                     lr_param.set_data(mindspore.Tensor(new_lr, dtype=mindspore.float32))
 
-                    print(f"  -> Reducing LR: {current_lr:.2e} -> {new_lr:.2e}")
+                    logging.info(f"  -> Reducing LR: {current_lr:.2e} -> {new_lr:.2e}")
                     current_lr = new_lr
                     scheduler_patience_counter = 0  # 重置scheduler计数器
 
             if patience_counter >= early_stopping_patience:
-                print(f"\nEarly stopping triggered at epoch {epoch+1}")
-                print(f"Best val loss: {best_val_loss:.6f} at epoch {best_epoch+1}")
+                logging.info(f"Early stopping triggered at epoch {epoch+1}")
+                logging.info(f"Best val loss: {best_val_loss:.6f} at epoch {best_epoch+1}")
                 break
 def test(model, dataset, loss_fn, label_scale=1.0):
     model.set_train(False)
@@ -251,7 +250,7 @@ def test(model, dataset, loss_fn, label_scale=1.0):
     rmse = np.sqrt(total_sq_error / total_count)
     mae = total_abs_error / total_count
 
-    print(f"Test metrics: loss={mean_loss:.6f}, RMSE={rmse:.6f}, MAE={mae:.6f}")
+    logging.info(f"Test metrics: loss={mean_loss:.6f}, RMSE={rmse:.6f}, MAE={mae:.6f}")
 
     return {
         "loss": float(mean_loss),
@@ -303,5 +302,5 @@ def test(model, dataset, loss_fn, label_scale=1.0):
     mae = float(mae)
 
 
-    print(f"Test metrics: loss={mean_loss:.6f}, RMSE={rmse:.6f}, MAE={mae:.6f}")
+    logging.info(f"Test metrics: loss={mean_loss:.6f}, RMSE={rmse:.6f}, MAE={mae:.6f}")
     return {"loss": mean_loss, "rmse": rmse, "mae": mae}

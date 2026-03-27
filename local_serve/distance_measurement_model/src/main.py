@@ -2,6 +2,9 @@
 
 import argparse
 import json
+import logging
+import sys
+from datetime import datetime
 from pathlib import Path
 
 import mindspore
@@ -10,6 +13,41 @@ from mindspore import context, nn
 from dataset import prepare_regression_datasets
 from model import Network, train, test
 from utils import load_model, print_predictions, save_model, predict_dir
+
+
+def setup_logging(log_dir: Path = None):
+    """Setup logging to both file and console."""
+    if log_dir is None:
+        log_dir = Path(__file__).resolve().parents[1] / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_file = log_dir / f"train_{timestamp}.log"
+
+    # Create formatter
+    formatter = logging.Formatter(
+        '%(asctime)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+
+    # File handler
+    file_handler = logging.FileHandler(log_file, encoding='utf-8')
+    file_handler.setLevel(logging.INFO)
+    file_handler.setFormatter(formatter)
+
+    # Console handler
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(formatter)
+
+    # Setup root logger
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+
+    logging.info(f"Logging initialized. Log file: {log_file}")
+    return log_file
 
 
 def _parse_args() -> argparse.Namespace:
@@ -42,8 +80,13 @@ def _parse_args() -> argparse.Namespace:
 def main() -> None:
     args = _parse_args()
 
-# 强制设置为 Ascend
+    # Setup logging
+    log_file = setup_logging()
+
+    # 强制设置为 Ascend
     context.set_context(mode=context.GRAPH_MODE, device_target="Ascend")
+
+    logging.info(f"Arguments: {args}")
 
     train_dataset, val_dataset, test_dataset, meta = prepare_regression_datasets(
         feature_dir=args.feature_dir,
@@ -70,7 +113,7 @@ def main() -> None:
         }
         with config_path.open("w", encoding="utf-8") as f:
             json.dump(config_data, f, indent=4)
-        print(f"Saved training config to {config_path} (input_scale={meta.input_scale:.2f}, label_scale={meta.label_scale})")
+        logging.info(f"Saved training config to {config_path} (input_scale={meta.input_scale:.2f}, label_scale={meta.label_scale})")
 
     step_size = train_dataset.get_dataset_size()
 
@@ -97,7 +140,7 @@ def main() -> None:
 
     metrics = test(model, test_dataset, loss_fn, label_scale=meta.label_scale)
     if metrics:
-        print(f"Evaluation metrics: {metrics}")
+        logging.info(f"Evaluation metrics: {metrics}")
 
     if args.save_path:
         save_model(model, str(args.save_path))
@@ -115,7 +158,7 @@ def main() -> None:
     if args.predict_dir and args.predict_out:
         predict_dir(model, args.predict_dir, args.predict_out, input_scale=meta.input_scale, label_scale=meta.label_scale)
     elif args.predict_dir or args.predict_out:
-        print("Both --predict-dir and --predict-out must be provided to run batch predictions.")
+        logging.warning("Both --predict-dir and --predict-out must be provided to run batch predictions.")
     
 
 

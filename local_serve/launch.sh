@@ -18,18 +18,18 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # 启动 6 个不同串口设备的定位计算程序
 # 在 Linux 下串口设备通常是 /dev/ttyUSB0, /dev/ttyACM0 等
 # 需要根据实际情况修改设备名称
-gnome-terminal --title="Position_COM5" -- bash -c "python \"$SCRIPT_DIR/Recive_and_Preprocess/extract_from_serial.py\" /dev/ttyUSB0; exec bash" &
-gnome-terminal --title="Position_COM17" -- bash -c "python \"$SCRIPT_DIR/Recive_and_Preprocess/extract_from_serial.py\" /dev/ttyUSB1; exec bash" &
-gnome-terminal --title="Position_COM19" -- bash -c "python \"$SCRIPT_DIR/Recive_and_Preprocess/extract_from_serial.py\" /dev/ttyUSB2; exec bash" &
-gnome-terminal --title="Position_COM24" -- bash -c "python \"$SCRIPT_DIR/Recive_and_Preprocess/extract_from_serial.py\" /dev/ttyUSB3; exec bash" &
-gnome-terminal --title="Position_COM25" -- bash -c "python \"$SCRIPT_DIR/Recive_and_Preprocess/extract_from_serial.py\" /dev/ttyUSB4; exec bash" &
-gnome-terminal --title="Position_COM26" -- bash -c "python \"$SCRIPT_DIR/Recive_and_Preprocess/extract_from_serial.py\" /dev/ttyUSB5; exec bash" &
+gnome-terminal --title="Position_COM5" -- bash -c "python \"$SCRIPT_DIR/process_flow/extract_from_serial.py\" /dev/ttyUSB0; exec bash" &
+gnome-terminal --title="Position_COM17" -- bash -c "python \"$SCRIPT_DIR/process_flow/extract_from_serial.py\" /dev/ttyUSB1; exec bash" &
+gnome-terminal --title="Position_COM19" -- bash -c "python \"$SCRIPT_DIR/process_flow/extract_from_serial.py\" /dev/ttyUSB2; exec bash" &
+gnome-terminal --title="Position_COM24" -- bash -c "python \"$SCRIPT_DIR/process_flow/extract_from_serial.py\" /dev/ttyUSB3; exec bash" &
+gnome-terminal --title="Position_COM25" -- bash -c "python \"$SCRIPT_DIR/process_flow/extract_from_serial.py\" /dev/ttyUSB4; exec bash" &
+gnome-terminal --title="Position_COM26" -- bash -c "python \"$SCRIPT_DIR/process_flow/extract_from_serial.py\" /dev/ttyUSB5; exec bash" &
 
 # 启动定位计算程序
-gnome-terminal --title="Position_Default" -- bash -c "python \"$SCRIPT_DIR/Recive_and_Preprocess/calculate_position.py\"; exec bash" &
+gnome-terminal --title="Position_Default" -- bash -c "python \"$SCRIPT_DIR/process_flow/calculate_position.py\"; exec bash" &
 
 # 启动预处理程序
-gnome-terminal --title="Preprocess_Hankel" -- bash -c "python \"$SCRIPT_DIR/Recive_and_Preprocess/preprocess_hankel_middle.py\"; exec bash" &
+gnome-terminal --title="Preprocess_Hankel" -- bash -c "python \"$SCRIPT_DIR/process_flow/preprocess.py\"; exec bash" &
 
 echo "所有窗口已启动！"
 read -p "按 Enter 键退出..."

@@ -1,5 +1,6 @@
 # Copyright 2026 lpshhh-TJ. Licensed under the MIT License.
 
+import logging
 import os
 from pathlib import Path
 
@@ -22,22 +23,22 @@ def _decode_distance(y_scaled: np.ndarray, label_scale: float = 1.0):
 
 def save_model(model, filepath: str):
     mindspore.save_checkpoint(model, filepath)
-    print(f"Saved model to {filepath}")
+    logging.info(f"Saved model to {filepath}")
 
 
 def load_model(model, filepath: str):
     param_dict = mindspore.load_checkpoint(filepath)
     param_not_load, _ = mindspore.load_param_into_net(model, param_dict)
     if param_not_load:
-        print(f"Parameters not loaded: {param_not_load}")
+        logging.warning(f"Parameters not loaded: {param_not_load}")
     else:
-        print("All parameters loaded successfully.")
+        logging.info("All parameters loaded successfully.")
     return model
 
 
 def print_predictions(model, dataset, label_scale: float = 1.0, limit: int = 5):
     if dataset is None:
-        print("Dataset is empty; no predictions to display.")
+        logging.warning("Dataset is empty; no predictions to display.")
         return
 
     model.set_train(False)
@@ -51,7 +52,7 @@ def print_predictions(model, dataset, label_scale: float = 1.0, limit: int = 5):
         label_vals = _decode_distance(label.asnumpy().reshape(-1), label_scale)
 
         for pred_value, label_value in zip(pred_vals, label_vals):
-            print(f"pred {pred_value:.4f} target {label_value:.4f}")
+            logging.info(f"pred {pred_value:.4f} target {label_value:.4f}")
             shown += 1
             if shown >= limit:
                 return
@@ -108,4 +109,4 @@ def predict_dir(model, input_dir, output_dir, input_scale: float = 1.0, label_sc
         with out_path.open("w", encoding="utf-8") as fh:
             fh.write(f"{pred_value}\n")
 
-    print(f"Wrote predictions for .npy files in {input_path} to {output_path}")
+    logging.info(f"Wrote predictions for .npy files in {input_path} to {output_path}")
