@@ -1,105 +1,106 @@
-/* Copyright 2026 mlq1288. Licensed under the MIT License. */
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <title>3D 老人监护系统</title>
     <style>
-        body { margin: 0; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        /* 顶部横幅样式 */
+        body { margin: 0; overflow: hidden; font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', 'Source Han Sans SC', 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; background: linear-gradient(135deg, #4a90e2 0%, #7b68ee 50%, #9b59b6 100%); color: #2c3e50; }
+        /* 顶部横幅样式 - 更高端 */
         #top-banner {
             position: absolute;
             top: 0; left: 50%;
             transform: translateX(-50%);
             width: 100%;
             text-align: center;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
             color: #ffffff;
-            background: linear-gradient(90deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
-            padding: 8px 0;
+            background: linear-gradient(90deg, rgba(74, 144, 226, 0.9), rgba(123, 104, 238, 0.9), rgba(155, 89, 182, 0.9));
+            padding: 12px 0;
             z-index: 10;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        /* 中央标题已删除 */
-        #info-card {
-            position: absolute; top: 50px; left: 20px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
-            padding: 20px; border-radius: 16px; 
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            pointer-events: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
         }
-        .status-tag { font-weight: 600; padding: 4px 12px; border-radius: 20px; font-size: 14px; }
-        .danger { background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
-        .normal { background: linear-gradient(135deg, #51cf66, #40c057); color: white; box-shadow: 0 4px 15px rgba(81, 207, 102, 0.3); }
+        /* 信息卡片样式 - 更现代 */
+        #info-card {
+            position: absolute; top: 60px; left: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(248, 250, 252, 0.85));
+            padding: 24px; border-radius: 20px; 
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #2c3e50;
+        }
+        #info-card h3 { color: #2c3e50; margin-bottom: 16px; font-weight: 600; }
+        #info-card p { margin: 8px 0; color: #5a6c7d; }
+        .status-tag { font-weight: 600; padding: 6px 14px; border-radius: 25px; font-size: 14px; }
+        .danger { background: linear-gradient(135deg, #ff4757, #ff3838); color: white; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4); }
+        .normal { background: linear-gradient(135deg, #2ed573, #1e90ff); color: white; box-shadow: 0 4px 15px rgba(46, 213, 115, 0.4); }
 
-        /* 数据采集面板样式 */
-        .status-not-started { background: linear-gradient(135deg, #868e96, #6c757d); color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
-        .status-collecting { background: linear-gradient(135deg, #74c0fc, #339af0); color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; box-shadow: 0 2px 8px rgba(116, 192, 252, 0.3); }
-        .status-completed { background: linear-gradient(135deg, #51cf66, #40c057); color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; box-shadow: 0 2px 8px rgba(81, 207, 102, 0.3); }
+        /* 数据采集面板样式 - 更高端 */
+        .status-not-started { background: linear-gradient(135deg, #57606f, #747d8c); color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); }
+        .status-collecting { background: linear-gradient(135deg, #3742fa, #2f3542); color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; box-shadow: 0 2px 10px rgba(55, 66, 250, 0.3); }
+        .status-completed { background: linear-gradient(135deg, #2ed573, #3742fa); color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; box-shadow: 0 2px 10px rgba(46, 213, 115, 0.3); }
 
         /* 网格预览样式 */
         .grid-cell {
             width: 100%;
             aspect-ratio: 1;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 10px;
             font-weight: 600;
             cursor: default;
-            border-radius: 8px;
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
-        .grid-cell.pending { background: linear-gradient(135deg, rgba(248, 249, 250, 0.8), rgba(233, 236, 239, 0.8)); color: #6c757d; }
-        .grid-cell.current { background: linear-gradient(135deg, #ffd43b, #fab005); color: #212529; box-shadow: 0 4px 15px rgba(255, 212, 59, 0.4); transform: scale(1.1); }
-        .grid-cell.completed { background: linear-gradient(135deg, #51cf66, #40c057); color: white; box-shadow: 0 4px 15px rgba(81, 207, 102, 0.3); }
+        .grid-cell.pending { background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)); color: #8892a0; }
+        .grid-cell.current { background: linear-gradient(135deg, #ffa726, #fb8c00); color: #212529; box-shadow: 0 4px 15px rgba(255, 167, 38, 0.5); transform: scale(1.1); }
+        .grid-cell.completed { background: linear-gradient(135deg, #2ed573, #1e90ff); color: white; box-shadow: 0 4px 15px rgba(46, 213, 115, 0.4); }
 
-        /* 控制按钮样式 */
+        /* 控制按钮样式 - 更高端 */
         .control-buttons {
             position: absolute;
-            top: 60px;
+            top: 70px;
             right: 20px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
             z-index: 15;
         }
         .control-btn {
-            padding: 12px 16px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
-            border: none;
-            border-radius: 12px;
+            padding: 14px 18px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(248, 250, 252, 0.8));
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 14px;
             cursor: pointer;
             font-weight: 600;
-            color: #495057;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: #2c3e50;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
             font-size: 14px;
         }
         .control-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.9));
         }
 
-        /* 弹窗面板样式 */
+        /* 弹窗面板样式 - 更高端 */
         .modal-panel {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             z-index: 1000;
             display: none;
             max-height: 80vh;
@@ -111,7 +112,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             z-index: 999;
             display: none;
         }
@@ -119,24 +120,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 25px 15px;
+            padding: 24px 28px 18px;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
         .modal-title {
             margin: 0;
-            color: #495057;
-            font-weight: 600;
-            font-size: 18px;
+            color: #2c3e50;
+            font-weight: 700;
+            font-size: 20px;
         }
         .close-btn {
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
-            color: #6c757d;
+            color: #5a6c7d;
             padding: 0;
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -144,11 +145,12 @@
             transition: all 0.2s ease;
         }
         .close-btn:hover {
-            background: rgba(108, 117, 125, 0.1);
-            color: #495057;
+            background: rgba(0, 0, 0, 0.1);
+            color: #2c3e50;
         }
         .modal-content {
-            padding: 20px 25px;
+            padding: 24px 28px;
+            color: #2c3e50;
         }
     </style>
 </head>
@@ -161,6 +163,7 @@
         <button class="control-btn" onclick="showModal('anchor-modal')">设置基站锚点坐标</button>
         <button class="control-btn" onclick="showModal('room-size-modal')">房屋尺寸设置</button>
         <button class="control-btn" onclick="showModal('room-config-modal')">房间区域设置</button>
+        <button class="control-btn" onclick="showModal('stay-stats-modal')">房间停留统计分析</button>
     </div>
 
     <div id="info-card">
@@ -254,8 +257,8 @@
     </div>
 
     <!-- 数据采集控制面板 -->
-    <div id="dataset-panel" style="position: absolute; top: 320px; left: 20px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95)); padding: 20px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); width: 300px; backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
-        <h4 style="margin: 0 0 15px 0; color: #495057; font-weight: 600;">数据集采集</h4>
+    <div id="dataset-panel" style="position: absolute; top: 280px; left: 20px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(248, 250, 252, 0.8)); padding: 24px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15); width: 320px; backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.3); color: #2c3e50;">
+        <h4 style="margin: 0 0 18px 0; color: #2c3e50; font-weight: 700;">数据集采集</h4>
 
         <div id="dataset-info" style="margin-bottom: 10px; font-size: 14px;">
             <p style="margin: 5px 0;">状态: <span id="collection-status" class="status-not-started">未开始</span></p>
@@ -287,11 +290,29 @@
         </div>
 
         <!-- 网格预览 -->
-        <div id="grid-preview" style="margin-top: 15px; padding: 15px; background: linear-gradient(135deg, rgba(248, 249, 250, 0.8), rgba(233, 236, 239, 0.8)); border-radius: 12px; display: none; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3);">
+        <div id="grid-preview" style="margin-top: 15px; padding: 15px; background: linear-gradient(135deg, rgba(248, 249, 250, 0.7), rgba(233, 236, 239, 0.7)); border-radius: 12px; display: none; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3);">
             <div style="font-size: 14px; margin-bottom: 8px; color: #495057; font-weight: 600;">5x5 网格预览:</div>
             <div id="grid-visual" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px;">
                 <!-- 动态生成 25 个格子 -->
             </div>
+        </div>
+    </div>
+
+    <!-- 房间停留统计分析弹窗 -->
+    <div id="stay-stats-modal-overlay" class="modal-overlay" onclick="hideModal('stay-stats-modal')"></div>
+    <div id="stay-stats-modal" class="modal-panel">
+        <div class="modal-header">
+            <h4 class="modal-title">房间停留统计分析</h4>
+            <button class="close-btn" onclick="hideModal('stay-stats-modal')">&times;</button>
+        </div>
+        <div class="modal-content">
+            <div id="stay-stats-content" style="font-size: 14px;">
+                <div style="margin-bottom: 8px;"><span style="color: #f43f5e;">●</span> 客厅: <span id="living-stay">0分</span></div>
+                <div style="margin-bottom: 8px;"><span style="color: #3b82f6;">●</span> 卧室: <span id="bedroom-stay">0分</span></div>
+                <div style="margin-bottom: 8px;"><span style="color: #22c55e;">●</span> 厨房: <span id="kitchen-stay">0分</span></div>
+                <div style="margin-bottom: 8px;"><span style="color: #a855f7;">●</span> 卫生间: <span id="bathroom-stay">0分</span></div>
+            </div>
+            <button onclick="resetStayStats()" style="width: 100%; padding: 8px; background: linear-gradient(135deg, #74c0fc, #339af0); color: white; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px; font-weight: 600; box-shadow: 0 2px 10px rgba(116, 192, 252, 0.3); transition: all 0.3s ease;">重置统计</button>
         </div>
     </div>
 
@@ -308,12 +329,12 @@
                 <label style="font-weight: 600; color: #f43f5e; display: block; margin-bottom: 6px;">客厅</label>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 12px;">
                     <div><label>X范围:</label>
-                        <input type="number" step="0.1" id="living-x-min" value="0" style="width: 100%; padding: 4px;"> 至 
-                        <input type="number" step="0.1" id="living-x-max" value="2.5" style="width: 100%; padding: 4px; margin-top: 2px;">
+                        <input type="number" step="0.1" id="living-x-min" value="0" style="width: 100%; padding: 6px; border-radius: 6px; border: 1px solid #ccc; background: white; color: #333;"> 至 
+                        <input type="number" step="0.1" id="living-x-max" value="2.5" style="width: 100%; padding: 6px; border-radius: 6px; border: 1px solid #ccc; background: white; color: #333; margin-top: 4px;">
                     </div>
                     <div><label>Z范围:</label>
                         <input type="number" step="0.1" id="living-z-min" value="0" style="width: 100%; padding: 4px;"> 至 
-                        <input type="number" step="0.1" id="living-z-max" value="4" style="width: 100%; padding: 4px; margin-top: 2px;">
+                        <input type="number" step="0.1" id="living-z-max" value="2" style="width: 100%; padding: 4px; margin-top: 2px;">
                     </div>
                 </div>
             </div>
@@ -368,15 +389,15 @@
     </div>
 
     <!-- 俯视图面板 -->
-    <div id="topview-panel" style="position: absolute; bottom: 20px; right: 20px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95)); padding: 20px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); width: 320px; backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
-        <h4 style="margin: 0 0 15px 0; color: #495057; font-weight: 600;">房间俯视图</h4>
-        <canvas id="topview-canvas" width="280" height="280" style="border: 2px solid rgba(74, 144, 226, 0.3); border-radius: 8px; background: #f8f9fa; display: block; margin: 0 auto;"></canvas>
-        <div style="margin-top: 12px; padding: 10px; background: rgba(248, 249, 250, 0.8); border-radius: 8px; font-size: 12px;">
-            <div style="margin-bottom: 4px;"><span style="display: inline-block; width: 12px; height: 12px; background: #f43f5e; border-radius: 2px; margin-right: 6px;"></span>客厅</div>
-            <div style="margin-bottom: 4px;"><span style="display: inline-block; width: 12px; height: 12px; background: #3b82f6; border-radius: 2px; margin-right: 6px;"></span>卧室</div>
-            <div style="margin-bottom: 4px;"><span style="display: inline-block; width: 12px; height: 12px; background: #22c55e; border-radius: 2px; margin-right: 6px;"></span>厨房</div>
-            <div style="margin-bottom: 4px;"><span style="display: inline-block; width: 12px; height: 12px; background: #a855f7; border-radius: 2px; margin-right: 6px;"></span>卫生间</div>
-            <div><span style="display: inline-block; width: 12px; height: 12px; background: #00d4aa; border-radius: 50%; margin-right: 6px;"></span>当前位置</div>
+    <div id="topview-panel" style="position: absolute; bottom: 20px; right: 20px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(248, 250, 252, 0.8)); padding: 24px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15); width: 340px; backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.3); color: #2c3e50;">
+        <h4 style="margin: 0 0 18px 0; color: #2c3e50; font-weight: 700;">房间俯视图</h4>
+        <canvas id="topview-canvas" width="280" height="280" style="border: 2px solid rgba(74, 144, 226, 0.2); border-radius: 12px; background: rgba(248, 250, 252, 0.8); display: block; margin: 0 auto;"></canvas>
+        <div style="margin-top: 15px; padding: 12px; background: rgba(248, 250, 252, 0.8); border-radius: 10px; font-size: 12px; border: 1px solid rgba(255, 255, 255, 0.3);">
+            <div style="margin-bottom: 6px;"><span style="display: inline-block; width: 12px; height: 12px; background: #f43f5e; border-radius: 2px; margin-right: 8px;"></span>客厅</div>
+            <div style="margin-bottom: 6px;"><span style="display: inline-block; width: 12px; height: 12px; background: #3b82f6; border-radius: 2px; margin-right: 8px;"></span>卧室</div>
+            <div style="margin-bottom: 6px;"><span style="display: inline-block; width: 12px; height: 12px; background: #22c55e; border-radius: 2px; margin-right: 8px;"></span>厨房</div>
+            <div style="margin-bottom: 6px;"><span style="display: inline-block; width: 12px; height: 12px; background: #a855f7; border-radius: 2px; margin-right: 8px;"></span>卫生间</div>
+            <div><span style="display: inline-block; width: 12px; height: 12px; background: #00d4aa; border-radius: 50%; margin-right: 8px;"></span>当前位置</div>
         </div>
     </div>
 
@@ -402,11 +423,27 @@
         // 2. 绘制房屋（透明长方体边框）- 使用 houseSize
         const geometry = new THREE.BoxGeometry(houseSize.l, houseSize.h, houseSize.w);
         const edges = new THREE.EdgesGeometry(geometry);
-        const lineMaterial = new THREE.LineBasicMaterial({ color: 0x4a90e2, linewidth: 3 });
+        const lineMaterial = new THREE.LineBasicMaterial({
+            color: 0x67c6ff,
+            linewidth: 6,
+            transparent: true,
+            opacity: 0.95
+        });
+        const lineGlowMaterial = new THREE.LineBasicMaterial({
+            color: 0x7fd9ff,
+            linewidth: 6,
+            transparent: true,
+            opacity: 0.35,
+            blending: THREE.AdditiveBlending
+        });
         let roomBox = new THREE.LineSegments(edges, lineMaterial);
+        let roomBoxGlow = new THREE.LineSegments(edges, lineGlowMaterial);
         // 将盒子底部对齐地面 (y=0)
         roomBox.position.y = houseSize.h / 2;
+        roomBoxGlow.position.y = houseSize.h / 2;
+        roomBoxGlow.scale.set(1.01, 1.01, 1.01);
         scene.add(roomBox);
+        scene.add(roomBoxGlow);
 
         // 添加一个半透明的地面 - 使用 houseSize
         const planeGeo = new THREE.PlaneGeometry(houseSize.l, houseSize.w);
@@ -419,12 +456,13 @@
         let roomWalls = [];
 
         // 绘制房间分隔墙
+        /*
         function drawRoomWalls() {
             // 清除旧的墙
             roomWalls.forEach(wall => scene.remove(wall));
             roomWalls = [];
 
-            const wallHeight = roomSize.h * 0.8; // 墙高为房间高度的80%
+            const wallHeight = roomSize.h; // 墙高为房间高度
             const wallMaterial = new THREE.MeshLambertMaterial({
                 color: 0x6c757d,
                 transparent: true,
@@ -451,8 +489,8 @@
 
             // 绘制垂直墙（沿X方向变化的边界）
             for (let x of xPositions) {
-                // 跳过房间外围的边界
-                if (x === 0 || x === roomSize.l) continue;
+                // 跳过房间外围的边界和紧挨外围的边界
+                if (x === 0 || x === roomSize.l || x === roomSize.l - 1) continue;
 
                 const wallGeo = new THREE.BoxGeometry(0.05, wallHeight, roomSize.w);
                 const wall = new THREE.Mesh(wallGeo, wallMaterial);
@@ -469,8 +507,8 @@
 
             // 绘制水平墙（沿Z方向变化的边界）
             for (let z of zPositions) {
-                // 跳过房间外围的边界
-                if (z === 0 || z === roomSize.w) continue;
+                // 跳过房间外围的边界和紧挨外围的边界
+                if (z === 0 || z === roomSize.w || z === roomSize.w - 0.2) continue;
 
                 const wallGeo = new THREE.BoxGeometry(roomSize.l, wallHeight, 0.05);
                 const wall = new THREE.Mesh(wallGeo, wallMaterial);
@@ -485,6 +523,7 @@
                 roomWalls.push(wall);
             }
         }
+        */
 
         // 3. 绘制老人（小球）
         const sphereGeo = new THREE.SphereGeometry(0.15, 32, 32);
@@ -620,11 +659,16 @@
 
             // 重建房屋边框
             scene.remove(roomBox);
+            scene.remove(roomBoxGlow);
             const geometry = new THREE.BoxGeometry(houseSize.l, houseSize.h, houseSize.w);
             const edges = new THREE.EdgesGeometry(geometry);
             roomBox = new THREE.LineSegments(edges, lineMaterial);
+            roomBoxGlow = new THREE.LineSegments(edges, lineGlowMaterial);
             roomBox.position.y = houseSize.h / 2;
+            roomBoxGlow.position.y = houseSize.h / 2;
+            roomBoxGlow.scale.set(1.01, 1.01, 1.01);
             scene.add(roomBox);
+            scene.add(roomBoxGlow);
 
             // 重建地面
             scene.remove(ground);
@@ -923,17 +967,53 @@
         
         // 房间配置对象
         let roomConfig = {
-            living: { xMin: 0, xMax: 2.5, zMin: 0, zMax: 4, color: '#f43f5e', name: '客厅' },
+            living: { xMin: 0, xMax: 2.5, zMin: 0, zMax: 2, color: '#f43f5e', name: '客厅' },
             bedroom: { xMin: 2.5, xMax: 5, zMin: 0, zMax: 2, color: '#3b82f6', name: '卧室' },
             kitchen: { xMin: 2.5, xMax: 5, zMin: 2, zMax: 4, color: '#22c55e', name: '厨房' },
             bathroom: { xMin: 0, xMax: 2.5, zMin: 2, zMax: 4, color: '#a855f7', name: '卫生间' }
         };
 
+        // 从localStorage加载房间配置
+        function loadRoomConfig() {
+            const storedConfig = localStorage.getItem('roomConfig');
+            if (storedConfig) {
+                roomConfig = JSON.parse(storedConfig);
+                // 更新UI输入框的值
+                document.getElementById('living-x-min').value = roomConfig.living.xMin;
+                document.getElementById('living-x-max').value = roomConfig.living.xMax;
+                document.getElementById('living-z-min').value = roomConfig.living.zMin;
+                document.getElementById('living-z-max').value = roomConfig.living.zMax;
+                document.getElementById('bedroom-x-min').value = roomConfig.bedroom.xMin;
+                document.getElementById('bedroom-x-max').value = roomConfig.bedroom.xMax;
+                document.getElementById('bedroom-z-min').value = roomConfig.bedroom.zMin;
+                document.getElementById('bedroom-z-max').value = roomConfig.bedroom.zMax;
+                document.getElementById('kitchen-x-min').value = roomConfig.kitchen.xMin;
+                document.getElementById('kitchen-x-max').value = roomConfig.kitchen.xMax;
+                document.getElementById('kitchen-z-min').value = roomConfig.kitchen.zMin;
+                document.getElementById('kitchen-z-max').value = roomConfig.kitchen.zMax;
+                document.getElementById('bathroom-x-min').value = roomConfig.bathroom.xMin;
+                document.getElementById('bathroom-x-max').value = roomConfig.bathroom.xMax;
+                document.getElementById('bathroom-z-min').value = roomConfig.bathroom.zMin;
+                document.getElementById('bathroom-z-max').value = roomConfig.bathroom.zMax;
+                // 更新显示
+                drawTopview();
+                // drawRoomWalls();
+            }
+        }
+
+        // 保存房间配置到localStorage
+        function saveRoomConfig() {
+            localStorage.setItem('roomConfig', JSON.stringify(roomConfig));
+        }
+
         // 当前所在房间
         let currentRoom = null;
 
         // 初始化绘制房间墙（需要在 roomConfig 定义之后）
-        drawRoomWalls();
+        // drawRoomWalls();
+
+        // 加载保存的房间配置
+        loadRoomConfig();
 
         // 更新房间配置
         function updateRoomConfig() {
@@ -941,7 +1021,7 @@
                 xMin: parseFloat(document.getElementById('living-x-min').value) || 0,
                 xMax: parseFloat(document.getElementById('living-x-max').value) || 2.5,
                 zMin: parseFloat(document.getElementById('living-z-min').value) || 0,
-                zMax: parseFloat(document.getElementById('living-z-max').value) || 4,
+                zMax: parseFloat(document.getElementById('living-z-max').value) || 2,
                 color: '#f43f5e',
                 name: '客厅'
             };
@@ -970,8 +1050,9 @@
                 name: '卫生间'
             };
             console.log('房间配置已更新:', roomConfig);
+            saveRoomConfig(); // 保存到localStorage
             drawTopview();
-            drawRoomWalls(); // 更新3D场景中的房间墙
+            // drawRoomWalls(); // 更新3D场景中的房间墙
             hideModal('room-config-modal'); // 关闭弹窗
         }
 
@@ -1060,6 +1141,91 @@
         // 初始化俯视图
         drawTopview();
 
+        // ========== 房间停留统计 ==========
+        
+        // 获取今天的日期字符串 (YYYY-MM-DD)
+        function getTodayString() {
+            const today = new Date();
+            return today.getFullYear() + '-' + 
+                   String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                   String(today.getDate()).padStart(2, '0');
+        }
+
+        // 从localStorage加载统计数据
+        function loadStayStats() {
+            const storedData = localStorage.getItem('roomStayStats');
+            const storedDate = localStorage.getItem('stayStatsDate');
+            const today = getTodayString();
+            
+            if (storedData && storedDate === today) {
+                roomStayStats = JSON.parse(storedData);
+            } else {
+                // 新的一天或没有数据，重置
+                roomStayStats = { living: 0, bedroom: 0, kitchen: 0, bathroom: 0 };
+                localStorage.setItem('stayStatsDate', today);
+                saveStayStats();
+            }
+            updateStayStatsDisplay();
+        }
+
+        // 保存统计数据到localStorage
+        function saveStayStats() {
+            localStorage.setItem('roomStayStats', JSON.stringify(roomStayStats));
+            // 同步到服务器
+            fetch('/stay-stats', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ stayStats: roomStayStats })
+            }).then(res => res.json())
+              .then(data => {
+                  console.log('停留统计已同步到服务器:', data);
+              })
+              .catch(e => console.log('停留统计同步失败，静默忽略'));
+        }
+
+        // 房间停留统计数据（以分钟为单位）
+        let roomStayStats = { living: 0, bedroom: 0, kitchen: 0, bathroom: 0 };
+        let lastRoom = null;
+        let lastUpdateTime = Date.now();
+
+        // 初始化加载数据
+        loadStayStats();
+
+        // 更新停留统计
+        function updateStayStats(currentRoom) {
+            const now = Date.now();
+            const elapsedMinutes = (now - lastUpdateTime) / (1000 * 60); // 转换为分钟
+            if (lastRoom && elapsedMinutes > 0) {
+                roomStayStats[lastRoom] += elapsedMinutes;
+                updateStayStatsDisplay();
+                saveStayStats(); // 保存到localStorage
+            }
+            lastUpdateTime = now;
+            lastRoom = currentRoom;
+        }
+
+        // 更新统计显示
+        function updateStayStatsDisplay() {
+            document.getElementById('living-stay').textContent = formatTime(roomStayStats.living);
+            document.getElementById('bedroom-stay').textContent = formatTime(roomStayStats.bedroom);
+            document.getElementById('kitchen-stay').textContent = formatTime(roomStayStats.kitchen);
+            document.getElementById('bathroom-stay').textContent = formatTime(roomStayStats.bathroom);
+        }
+
+        // 格式化时间显示
+        function formatTime(minutes) {
+            const hours = Math.floor(minutes / 60);
+            const mins = Math.floor(minutes % 60);
+            return `${hours}时${mins}分`;
+        }
+
+        // 重置统计数据
+        function resetStayStats() {
+            roomStayStats = { living: 0, bedroom: 0, kitchen: 0, bathroom: 0 };
+            updateStayStatsDisplay();
+            saveStayStats();
+        }
+
         // 4. 灯光
         const light = new THREE.DirectionalLight(0xffffff, 1.2);
         light.position.set(5, 10, 7.5).normalize();
@@ -1097,6 +1263,7 @@
 
             // 更新房间位置和俯视图
             currentRoom = getCurrentRoom(data.x, data.z);
+            updateStayStats(currentRoom);
             drawTopview();
         }
 

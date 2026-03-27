@@ -1,6 +1,3 @@
-# Copyright 2026 mlq1288. Licensed under the MIT License.
-# 这只是一个测试程序，在服务器正常运行时并不使用
-
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel

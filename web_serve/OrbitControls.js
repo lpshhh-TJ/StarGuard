@@ -1,5 +1,3 @@
-/* Copyright 2026 mlq1288. Licensed under the MIT License. */
-
 ( function () {
 
 	// Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).

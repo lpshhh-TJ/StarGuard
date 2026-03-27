@@ -1,5 +1,3 @@
-/* Copyright 2026 mlq1288. Licensed under the MIT License. */
-
 console.log("serve.js 被执行了");
 const express = require('express');
 const cors = require('cors');
@@ -29,6 +27,14 @@ let anchors = [
 
 // 房间尺寸
 let roomSize = { l: 6, h: 3, w: 4.2 };
+
+// 房间区域配置（x/z 范围）
+let roomConfig = {
+    living: { xMin: 0, xMax: 2.5, zMin: 0, zMax: 2, color: '#f43f5e', name: '客厅' },
+    bedroom: { xMin: 2.5, xMax: 5, zMin: 0, zMax: 2, color: '#3b82f6', name: '卧室' },
+    kitchen: { xMin: 2.5, xMax: 5, zMin: 2, zMax: 4, color: '#22c55e', name: '厨房' },
+    bathroom: { xMin: 0, xMax: 2.5, zMin: 2, zMax: 4, color: '#a855f7', name: '卫生间' }
+};
 
 // 数据采集状态
 let datasetCollection = {
@@ -78,6 +84,20 @@ app.post('/roomSize', (req, res) => {
         console.log("房间尺寸已更新:", roomSize);
     }
     res.json({ status: "ok", roomSize: roomSize });
+});
+
+// 获取房间区域配置
+app.get('/roomConfig', (req, res) => {
+    res.json({ roomConfig: roomConfig });
+});
+
+// 更新房间区域配置
+app.post('/roomConfig', (req, res) => {
+    if (req.body.roomConfig && typeof req.body.roomConfig === 'object') {
+        roomConfig = req.body.roomConfig;
+        console.log("房间区域配置已更新:", roomConfig);
+    }
+    res.json({ status: "ok", roomConfig: roomConfig });
 });
 
 // ========== 数据采集 API ==========

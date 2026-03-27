@@ -1,5 +1,3 @@
-# Copyright 2026 mlq1288. Licensed under the MIT License.
-# 这只是一个测试程序，在服务器正常运行时不需要运行
 import requests
 import json
 
