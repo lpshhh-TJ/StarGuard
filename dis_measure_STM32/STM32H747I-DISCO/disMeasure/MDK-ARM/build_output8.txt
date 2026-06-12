@@ -1,0 +1,23 @@
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin'
+Build target 'disMeasure_CM7'
+Note: source file '../CM7/Core/Src/main.c' - object file renamed from 'disMeasure_CM7\main.o' to 'disMeasure_CM7\main_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_it.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_it.o' to 'disMeasure_CM7\stm32h7xx_it_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_hal_msp.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_hal_msp.o' to 'disMeasure_CM7\stm32h7xx_hal_msp_1.o'.compiling app_x-cube-ai.c...
+..\CM7\AI\App\app_x-cube-ai.c(172): warning:  #550-D: variable "ret_code"  was set but never used
+    stai_return_code ret_code;
+..\CM7\AI\App\app_x-cube-ai.c(444): error:  #20: identifier "ai_ready" is undefined
+    if (!ai_ready || stai_input[0] == NULL || stai_output[0] == NULL) {
+..\CM7\AI\App\app_x-cube-ai.c(466): warning:  #870-D: invalid multibyte character sequence
+      LC_PRINT("Selftest PASS â€? output: %.6f\r\n", (double)dist);
+..\CM7\AI\App\app_x-cube-ai.c(493): error:  #20: identifier "ai_ready" is undefined
+    if(ai_ready) {
+..\CM7\AI\App\app_x-cube-ai.c(503): error:  #20: identifier "ai_ready" is undefined
+    if (ai_ready) {
+..\CM7\AI\App\app_x-cube-ai.c(530): warning:  #870-D: invalid multibyte character sequence
+      UTIL_LCD_DisplayStringAt(430, LINE(5), (uint8_t *)"AI not ready â€? skip test", LEFT_MODE);
+..\CM7\AI\App\app_x-cube-ai.c(596): error:  #20: identifier "ai_ready" is undefined
+        ai_ready = 1;
+..\CM7\AI\App\app_x-cube-ai.c(598): error:  #20: identifier "ai_ready" is undefined
+        ai_ready = 0;
+..\CM7\AI\App\app_x-cube-ai.c: 3 warnings, 5 errors
+"disMeasure_CM7\disMeasure_CM7.axf" - 5 Error(s), 3 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:05

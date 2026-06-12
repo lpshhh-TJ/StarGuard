@@ -1,0 +1,32 @@
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin'
+Build target 'disMeasure_CM7'
+Note: source file '../CM7/Core/Src/main.c' - object file renamed from 'disMeasure_CM7\main.o' to 'disMeasure_CM7\main_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_it.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_it.o' to 'disMeasure_CM7\stm32h7xx_it_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_hal_msp.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_hal_msp.o' to 'disMeasure_CM7\stm32h7xx_hal_msp_1.o'.linking...
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching app_x-cube-ai.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32h747xx_cm7.o(STACK).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32h747xx_cm7.o(HEAP).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32h747i_discovery_lcd.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32h747i_discovery_sdram.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching main_1.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32_lcd.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching app_x-cube-ai.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching libspace.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32h747i_discovery_qspi.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching otm8009a.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching nt35510.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32h7xx_it_1.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching is42s32800j.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32h7xx_hal.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching aitestutility.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32h747i_discovery_lcd.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching otm8009a.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching nt35510.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching system_stm32h7xx_dualcore_boot_cm4_cm7.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32_lcd.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching aitestutility.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6407E: Sections of aggregate size 0x82bc bytes could not fit into .ANY selector(s).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 23 error messages.
+"disMeasure_CM7\disMeasure_CM7.axf" - 23 Error(s), 0 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:01

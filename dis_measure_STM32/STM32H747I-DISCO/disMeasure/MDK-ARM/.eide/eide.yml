@@ -1,0 +1,502 @@
+version: "4.1"
+name: disMeasure
+type: ARM
+deviceName: STM32H747XIHx
+packDir: .pack/Keil/STM32H7xx_DFP.4.1.0
+srcDirs: []
+virtualFolder:
+  name: <virtual_root>
+  files: []
+  folders:
+    - name: Application
+      files: []
+      folders:
+        - name: MDK-ARM
+          files:
+            - path: ../startup_stm32h747xx_CM4.s
+            - path: ../startup_stm32h747xx_CM7.s
+          folders: []
+        - name: User
+          files: []
+          folders:
+            - name: CM4
+              files: []
+              folders:
+                - name: Core
+                  files:
+                    - path: ../CM4/Core/Src/main.c
+                    - path: ../CM4/Core/Src/stm32h7xx_it.c
+                    - path: ../CM4/Core/Src/stm32h7xx_hal_msp.c
+                  folders: []
+            - name: CM7
+              files: []
+              folders:
+                - name: Core
+                  files:
+                    - path: ../CM7/Core/Src/main.c
+                    - path: ../CM7/Core/Src/stm32h7xx_it.c
+                    - path: ../CM7/Core/Src/stm32h7xx_hal_msp.c
+                  folders: []
+                - name: AI
+                  files: []
+                  folders:
+                    - name: App
+                      files:
+                        - path: ../CM7/AI/App/network_data.c
+                        - path: ../CM7/AI/App/network.c
+                        - path: ../CM7/AI/App/user_init.c
+                        - path: ../CM7/AI/App/app_x-cube-ai.c
+                        - path: ../CM7/AI/App/network_weights.c
+                      folders: []
+            - name: Middlewares
+              files: []
+              folders:
+                - name: ST
+                  files: []
+                  folders:
+                    - name: AI
+                      files: []
+                      folders:
+                        - name: Misc
+                          files:
+                            - path: ../Middlewares/ST/AI/Misc/Src/syscalls.c
+                            - path: ../Middlewares/ST/AI/Misc/Src/lc_print.c
+                            - path: ../Middlewares/ST/AI/Misc/Src/ai_device_adaptor.c
+                            - path: ../Middlewares/ST/AI/Misc/Src/aiTestUtility.c
+                            - path: ../Middlewares/ST/AI/Misc/Src/aiTestHelper_ST_AI.c
+                          folders: []
+    - name: Drivers
+      files: []
+      folders:
+        - name: STM32H7xx_HAL_Driver
+          files:
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_qspi.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sdram.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma2d.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dsi.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc_ex.c
+            - path: ../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_fmc.c
+          folders: []
+        - name: CMSIS
+          files:
+            - path: ../Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.c
+          folders: []
+        - name: BSP
+          files: []
+          folders:
+            - name: STM32H747I-DISCO
+              files:
+                - path: ../Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_qspi.c
+                - path: ../Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_sdram.c
+                - path: ../Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery.c
+                - path: ../Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_lcd.c
+                - path: ../Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_bus.c
+              folders: []
+            - name: Components
+              files: []
+              folders:
+                - name: mt25tl01g
+                  files:
+                    - path: ../Drivers/BSP/Components/mt25tl01g/mt25tl01g.c
+                  folders: []
+                - name: is42s32800j
+                  files:
+                    - path: ../Drivers/BSP/Components/is42s32800j/is42s32800j.c
+                  folders: []
+                - name: otm8009a
+                  files:
+                    - path: ../Drivers/BSP/Components/otm8009a/otm8009a.c
+                    - path: ../Drivers/BSP/Components/otm8009a/otm8009a_reg.c
+                  folders: []
+                - name: nt35510
+                  files:
+                    - path: ../Drivers/BSP/Components/nt35510/nt35510.c
+                    - path: ../Drivers/BSP/Components/nt35510/nt35510_reg.c
+                  folders: []
+                - name: adv7533
+                  files:
+                    - path: ../Drivers/BSP/Components/adv7533/adv7533.c
+                    - path: ../Drivers/BSP/Components/adv7533/adv7533_reg.c
+                  folders: []
+    - name: Utilities
+      files: []
+      folders:
+        - name: lcd
+          files:
+            - path: ../Utilities/lcd/stm32_lcd.c
+          folders: []
+    - name: Lib
+      files:
+        - path: ../Middlewares/ST/AI/Lib/NetworkRuntime1201_CM7_Keil.lib/NetworkRuntime1201_CM7_Keil.lib
+      folders: []
+dependenceList: []
+outDir: build
+miscInfo:
+  uid: fb909c03f7ea1b0385003c84e0e3fc56
+targets:
+  disMeasure_CM4:
+    cppPreprocessAttrs:
+      defineList:
+        - CORE_CM4
+        - USE_HAL_DRIVER
+        - USE_PWR_DIRECT_SMPS_SUPPLY
+        - HAVE_NETWORK_INFO
+        - STM32H747xx
+      incList:
+        - .
+        - ../CM4/Core/Inc
+        - ../Drivers/STM32H7xx_HAL_Driver/Inc
+        - ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy
+        - ../Drivers/CMSIS/Device/ST/STM32H7xx/Include
+        - ../Drivers/CMSIS/Include
+        - .cmsis/include
+        - RTE/_disMeasure_CM4
+      libList: []
+    excludeList:
+      - <virtual_root>/Application/MDK-ARM/startup_stm32h747xx_CM7.s
+      - <virtual_root>/Application/User/CM7/Core
+      - <virtual_root>/Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart.c
+      - <virtual_root>/Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart_ex.c
+      - <virtual_root>/Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_qspi.c
+      - <virtual_root>/Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_sdram.c
+      - <virtual_root>/Drivers/STM32H7xx_HAL_Driver/stm32h7xx_ll_fmc.c
+      - <virtual_root>/Application/User/Middlewares/ST/AI/Misc/syscalls.c
+      - <virtual_root>/Application/User/Middlewares/ST/AI/Misc/lc_print.c
+      - <virtual_root>/Application/User/Middlewares/ST/AI/Misc/ai_device_adaptor.c
+      - <virtual_root>/Application/User/Middlewares/ST/AI/Misc/aiTestUtility.c
+      - <virtual_root>/Application/User/Middlewares/ST/AI/Misc/aiTestHelper_ST_AI.c
+      - <virtual_root>/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_qspi.c
+      - <virtual_root>/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_sdram.c
+      - <virtual_root>/Drivers/BSP/Components/mt25tl01g/mt25tl01g.c
+      - <virtual_root>/Drivers/BSP/Components/is42s32800j/is42s32800j.c
+      - <virtual_root>/Drivers/BSP/Components/otm8009a
+      - <virtual_root>/Drivers/BSP/Components/nt35510
+      - <virtual_root>/Drivers/BSP/Components/adv7533
+      - <virtual_root>/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery.c
+      - <virtual_root>/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_lcd.c
+      - <virtual_root>/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_bus.c
+      - <virtual_root>/Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma2d.c
+      - <virtual_root>/Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dsi.c
+      - <virtual_root>/Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_ltdc.c
+      - <virtual_root>/Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_ltdc_ex.c
+      - <virtual_root>/Utilities
+      - <virtual_root>/Lib/NetworkRuntime1201_CM7_Keil.lib
+      - <virtual_root>/Application/User/CM7/AI/App/network_data.c
+      - <virtual_root>/Application/User/CM7/AI/App/network.c
+      - <virtual_root>/Application/User/CM7/AI/App/user_init.c
+      - <virtual_root>/Application/User/CM7/AI/App/app_x-cube-ai.c
+      - <virtual_root>/Application/User/CM7/AI/App/network_weights.c
+    settings:
+      debugger: cortex-debug
+    toolchain: AC5
+    toolchainConfigMap:
+      AC5:
+        archExtensions: ""
+        cpuType: Cortex-M4
+        floatingPointHardware: single
+        options:
+          version: 4
+          afterBuildTasks: []
+          asm-compiler:
+            defines: []
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            CXX_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            C_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            c99-mode: true
+            gnu-extensions: true
+            one-elf-section-per-function: true
+            optimization: level-3
+            warnings: all-warnings
+          global:
+            output-debug-info: enable
+            use-microLIB: false
+          linker:
+            $outputTaskExcludes:
+              - .bin
+            output-format: elf
+            ro-base: ""
+            rw-base: ""
+            xo-base: ""
+        scatterFilePath: stm32h747xx_flash_CM4.sct
+        storageLayout:
+          RAM:
+            - id: 1
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 3
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 1
+              isChecked: true
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: IRAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: IRAM
+          ROM:
+            - id: 1
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 3
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 1
+              isChecked: true
+              isStartup: true
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: IROM
+            - id: 2
+              isChecked: true
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: IROM
+        useCustomScatterFile: true
+    uploadConfigMap:
+      JLink:
+        baseAddr: ""
+        bin: ""
+        cpuInfo:
+          cpuName: "null"
+          vendor: "null"
+        otherCmds: ""
+        proType: 1
+        speed: 8000
+      OpenOCD:
+        baseAddr: "0x08000000"
+        bin: ""
+        interface: cmsis-dap
+        target: stm32f1x
+    uploader: OpenOCD
+  disMeasure_CM7:
+    cppPreprocessAttrs:
+      defineList:
+        - CORE_CM7
+        - USE_HAL_DRIVER
+        - STM32H747xx
+        - USE_PWR_DIRECT_SMPS_SUPPLY
+        - HAVE_NETWORK_INFO
+      incList:
+        - .
+        - ../CM7/Core/Inc
+        - ../Drivers/STM32H7xx_HAL_Driver/Inc
+        - ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy
+        - ../Drivers/CMSIS/Device/ST/STM32H7xx/Include
+        - ../Drivers/CMSIS/Include
+        - ../Middlewares/ST/AI/Inc
+        - ../Middlewares/ST/AI/Misc/Inc
+        - ../Drivers/BSP/Components/mt25tl01g
+        - ../Drivers/BSP/STM32H747I-DISCO
+        - ../Drivers/BSP/Components/is42s32800j
+        - ../Drivers/BSP/Components/otm8009a
+        - ../Drivers/BSP/Components/nt35510
+        - ../Drivers/BSP/Components/adv7533
+        - ../Drivers/BSP/Components/Common
+        - ../Utilities/lcd
+        - ../Utilities/Fonts
+        - ../CM7/AI/App
+        - .cmsis/include
+        - RTE/_disMeasure_CM7
+      libList: []
+    excludeList:
+      - <virtual_root>/Application/MDK-ARM/startup_stm32h747xx_CM4.s
+      - <virtual_root>/Application/User/CM4/Core
+      - <virtual_root>/Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_adc.c
+      - <virtual_root>/Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_adc_ex.c
+    settings:
+      debugger: cortex-debug
+    toolchain: AC5
+    toolchainConfigMap:
+      AC5:
+        archExtensions: ""
+        cpuType: Cortex-M7
+        floatingPointHardware: double
+        options:
+          version: 4
+          afterBuildTasks: []
+          asm-compiler:
+            defines: []
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            CXX_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            C_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            c99-mode: true
+            gnu-extensions: true
+            one-elf-section-per-function: true
+            optimization: level-3
+            warnings: all-warnings
+          global:
+            output-debug-info: enable
+            use-microLIB: false
+          linker:
+            $outputTaskExcludes:
+              - .bin
+            output-format: elf
+            ro-base: ""
+            rw-base: ""
+            xo-base: ""
+        scatterFilePath: stm32h747xx_flash_CM7.sct
+        storageLayout:
+          RAM:
+            - id: 1
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 3
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 1
+              isChecked: true
+              mem:
+                size: ""
+                startAddr: ""
+              noInit: false
+              tag: IRAM
+            - id: 2
+              isChecked: true
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: IRAM
+          ROM:
+            - id: 1
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 3
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 1
+              isChecked: true
+              isStartup: true
+              mem:
+                size: ""
+                startAddr: ""
+              tag: IROM
+            - id: 2
+              isChecked: true
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: IROM
+        useCustomScatterFile: true
+    uploadConfigMap:
+      JLink:
+        baseAddr: ""
+        bin: ""
+        cpuInfo:
+          cpuName: "null"
+          vendor: "null"
+        otherCmds: ""
+        proType: 1
+        speed: 8000
+      OpenOCD:
+        baseAddr: "0x08000000"
+        bin: ""
+        interface: cmsis-dap
+        target: stm32f1x
+      STLink:
+        address: "0x08000000"
+        bin: ""
+        elFile: None
+        optionBytes: .eide/dismeasure_cm7.st.option.bytes.ini
+        otherCmds: ""
+        proType: SWD
+        resetMode: default
+        runAfterProgram: true
+        speed: 4000
+    uploader: STLink

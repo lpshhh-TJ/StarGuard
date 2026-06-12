@@ -1,0 +1,119 @@
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin'
+Build target 'disMeasure_CM7'
+Note: source file '../CM7/Core/Src/main.c' - object file renamed from 'disMeasure_CM7\main.o' to 'disMeasure_CM7\main_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_it.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_it.o' to 'disMeasure_CM7\stm32h7xx_it_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_hal_msp.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_hal_msp.o' to 'disMeasure_CM7\stm32h7xx_hal_msp_1.o'.compiling user_init.c...
+..\CM7\AI\App\user_init.c(106): warning:  #1-D: last line of file ends without a newline
+  }
+..\CM7\AI\App\user_init.c: 1 warning, 0 errors
+compiling network_weights.c...
+..\CM7\AI\App\network_weights.h(25): warning:  #1-D: last line of file ends without a newline
+  #endif /* __NETWORK_WEIGHTS_H__ */
+..\CM7\AI\App\network_weights.c(61): warning:  #1-D: last line of file ends without a newline
+  }
+..\CM7\AI\App\network_weights.c: 2 warnings, 0 errors
+compiling network_data.c...
+compiling network.c...
+compiling ai_device_adaptor.c...
+compiling aiTestHelper_ST_AI.c...
+compiling main.c...
+compiling aiTestUtility.c...
+compiling app_x-cube-ai.c...
+..\CM7\AI\App\multi_test.h(1236): warning:  #1-D: last line of file ends without a newline
+  };
+..\CM7\AI\App\app_x-cube-ai.c(198): warning:  #550-D: variable "ret_code"  was set but never used
+    stai_return_code ret_code;
+..\CM7\AI\App\app_x-cube-ai.c(638): warning:  #870-D: invalid multibyte character sequence
+      UTIL_LCD_DisplayStringAt(430, LINE(5), (uint8_t *)"AI not ready â€? skip test", LEFT_MODE);
+..\CM7\AI\App\app_x-cube-ai.c(213): warning:  #177-D: function "copy_weights_to_sdram"  was declared but never referenced
+  static int copy_weights_to_sdram(void)
+..\CM7\AI\App\app_x-cube-ai.c: 4 warnings, 0 errors
+linking...
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching app_x-cube-ai.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32h747xx_cm7.o(STACK).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32h747xx_cm7.o(HEAP).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32h747i_discovery_lcd.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32h747i_discovery_sdram.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching main_1.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32_lcd.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching app_x-cube-ai.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching libspace.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32h747i_discovery_qspi.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching otm8009a.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching nt35510.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32h7xx_it_1.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching is42s32800j.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32h7xx_hal.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching aitestutility.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32h747i_discovery_lcd.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching otm8009a.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching nt35510.o(.bss).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching system_stm32h7xx_dualcore_boot_cm4_cm7.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32_lcd.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching network.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6406E: No space in execution regions with .ANY selector matching aitestutility.o(.data).
+disMeasure_CM7\disMeasure_CM7.axf: Error: L6407E: Sections of aggregate size 0x8964 bytes could not fit into .ANY selector(s).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 84 error messages.
+"disMeasure_CM7\disMeasure_CM7.axf" - 84 Error(s), 7 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:11

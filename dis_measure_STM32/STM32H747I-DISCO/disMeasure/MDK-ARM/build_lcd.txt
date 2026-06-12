@@ -1,0 +1,10 @@
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin'
+Build target 'disMeasure_CM7'
+Note: source file '../CM7/Core/Src/main.c' - object file renamed from 'disMeasure_CM7\main.o' to 'disMeasure_CM7\main_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_it.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_it.o' to 'disMeasure_CM7\stm32h7xx_it_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_hal_msp.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_hal_msp.o' to 'disMeasure_CM7\stm32h7xx_hal_msp_1.o'.compiling stm32h7xx_it.c...
+linking...
+stm32h747xx_flash_CM7.sct(12): warning: L6314W: No section matches pattern *(.AI_ITCMRAM).
+Program Size: Code=47724 RO-data=4957020 RW-data=249952 ZI-data=33216  
+Finished: 0 information, 1 warning and 0 error messages.
+FromELF: creating hex file...
+"disMeasure_CM7\disMeasure_CM7.axf" - 0 Error(s), 1 Warning(s).
+Build Time Elapsed:  00:00:05

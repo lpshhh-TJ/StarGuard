@@ -1,0 +1,76 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.41.0.0
+Copyright (C) 2024 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: l lps, HP Inc., LIC=JL28G-V6BDA-Z9GG9-4JQJ0-X2RWP-MJLZ2
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.41.0.0
+Toolchain Path:  C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.41.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.3.0.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+C:\Users\lps\Documents\disMeasure\MDK-ARM\disMeasure.uvprojx
+Project File Date:  06/06/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin'
+Build target 'disMeasure_CM7'
+Note: source file '../CM7/Core/Src/main.c' - object file renamed from 'disMeasure_CM7\main.o' to 'disMeasure_CM7\main_1.o'.
+Note: source file '../CM7/Core/Src/stm32h7xx_it.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_it.o' to 'disMeasure_CM7\stm32h7xx_it_1.o'.
+Note: source file '../CM7/Core/Src/stm32h7xx_hal_msp.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_hal_msp.o' to 'disMeasure_CM7\stm32h7xx_hal_msp_1.o'.
+compiling stm32h7xx_hal_msp.c...
+compiling stm32h7xx_it.c...
+compiling app_x-cube-ai.c...
+..\CM7\AI\App\multi_test.h(1236): warning:  #1-D: last line of file ends without a newline
+  };
+..\CM7\AI\App\app_x-cube-ai.c(199): warning:  #550-D: variable "ret_code"  was set but never used
+    stai_return_code ret_code;
+..\CM7\AI\App\app_x-cube-ai.c(639): warning:  #870-D: invalid multibyte character sequence
+      UTIL_LCD_DisplayStringAt(430, LINE(5), (uint8_t *)"AI not ready â€? skip test", LEFT_MODE);
+..\CM7\AI\App\app_x-cube-ai.c(214): warning:  #177-D: function "copy_weights_to_sdram"  was declared but never referenced
+  static int copy_weights_to_sdram(void)
+..\CM7\AI\App\app_x-cube-ai.c: 4 warnings, 0 errors
+linking...
+stm32h747xx_flash_CM7.sct(11): warning: L6314W: No section matches pattern *(.AI_ITCMRAM).
+Program Size: Code=50740 RO-data=453512 RW-data=437264 ZI-data=33368  
+Finished: 0 information, 1 warning and 0 error messages.
+FromELF: creating hex file...
+"disMeasure_CM7\disMeasure_CM7.axf" - 0 Error(s), 5 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.1.0.pack
+                ARM::CMSIS@6.1.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.1.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32H7xx_DFP.4.1.3.pack
+                Keil::STM32H7xx_DFP@4.1.3
+                STMicroelectronics STM32H7 Series Device Support
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_disMeasure_CM7
+  C:/Users/lps/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.1.0
+      Include file:  CMSIS/Core/Include/tz_context.h
+Build Time Elapsed:  00:00:07
+</pre>
+</body>
+</html>

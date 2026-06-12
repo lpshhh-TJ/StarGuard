@@ -1,0 +1,27 @@
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin'
+Build target 'disMeasure_CM7'
+Note: source file '../CM7/Core/Src/main.c' - object file renamed from 'disMeasure_CM7\main.o' to 'disMeasure_CM7\main_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_it.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_it.o' to 'disMeasure_CM7\stm32h7xx_it_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_hal_msp.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_hal_msp.o' to 'disMeasure_CM7\stm32h7xx_hal_msp_1.o'.compiling user_init.c...
+..\CM7\AI\App\user_init.c(106): warning:  #1-D: last line of file ends without a newline
+  }
+..\CM7\AI\App\user_init.c: 1 warning, 0 errors
+compiling main.c...
+compiling aiTestHelper_ST_AI.c...
+compiling aiTestUtility.c...
+compiling app_x-cube-ai.c...
+..\CM7\AI\App\multi_test.h(1236): warning:  #1-D: last line of file ends without a newline
+  };
+..\CM7\AI\App\app_x-cube-ai.c(198): warning:  #550-D: variable "ret_code"  was set but never used
+    stai_return_code ret_code;
+..\CM7\AI\App\app_x-cube-ai.c(625): warning:  #870-D: invalid multibyte character sequence
+      UTIL_LCD_DisplayStringAt(430, LINE(5), (uint8_t *)"AI not ready â€? skip test", LEFT_MODE);
+..\CM7\AI\App\app_x-cube-ai.c(213): warning:  #177-D: function "copy_weights_to_sdram"  was declared but never referenced
+  static int copy_weights_to_sdram(void)
+..\CM7\AI\App\app_x-cube-ai.c: 4 warnings, 0 errors
+compiling ai_device_adaptor.c...
+linking...
+stm32h747xx_flash_CM7.sct(12): warning: L6314W: No section matches pattern *(.AI_ITCMRAM).
+Program Size: Code=47992 RO-data=4957024 RW-data=249952 ZI-data=33216  
+Finished: 0 information, 1 warning and 0 error messages.
+FromELF: creating hex file...
+"disMeasure_CM7\disMeasure_CM7.axf" - 0 Error(s), 6 Warning(s).
+Build Time Elapsed:  00:00:11

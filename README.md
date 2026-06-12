@@ -11,6 +11,8 @@
 
 在老龄化趋势下，独居老人数量日益增长，家中跌倒问题愈加多发。为了让子女及时了解老人的紧急状况和生活习惯，同时最大程度保护老人隐私，**StarGuard 智护星居**团队打造了一款以室内定位为核心的全流程解决方案。
 
+除此以外，依托于本解决方案，另外设计了一套以 **STM32H747I-DISCO** 为核心计算设备的嵌入式端侧测距系统（详见 [dis_measure_STM32](dis_measure_STM32/README.md)）。小熊派 BS21E 通过 SLE 协议采集 IQ 原始数据，经 UART 发送给 STM32，由 STM32 完成 Hankel 矩阵变换和 AI 推理，直接在 LCD 上显示距离结果，实现脱离 PC 的低成本纯嵌入式部署。
+
 ### 核心优势
 
 | 特性 | 技术方案 |
@@ -104,22 +106,44 @@ node serve.js
 # 访问 http://localhost:3000
 ```
 
+### STM32 端侧测距系统部署
+
+详见 [dis_measure_STM32/README.md](dis_measure_STM32/README.md)。
+
+```bash
+# 1. BS21E 发送端固件
+cd dis_measure_STM32/BS21E/sle_measure_dis
+# 按 BS21E SDK 文档配置编译环境，烧录固件
+
+# 2. STM32 接收端（Keil MDK）
+# 打开 dis_measure_STM32/STM32H747I-DISCO/disMeasure/MDK-ARM/disMeasure.uvprojx
+# 编译 CM7 工程，下载到开发板
+
+# 3. 模型训练（可选，需 MindSpore + Ascend）
+cd dis_measure_STM32/Model_SourceCode(Python)/dm_model_stm32/src
+python main.py --augment
+```
+
 ---
 
 ## 目录结构
 
 ```
 mindspore_submit/
-├── firmware/                    # 硬件端固件
-│   └── sle_measure/            # Client/Server 设备代码
+├── firmware/                    # 硬件端固件 (BearPi H2821)
+│   └── sle_measure_dis/        # Client/Server 设备代码
 ├── local_serve/                # 本地服务端
 │   ├── process_flow/           # 主程序源码
 │   ├── distance_measurement_model/  # 测距模型训练
 │   ├── sisfall2/               # 跌倒检测模型训练
 │   └── hankel_dataset/         # 测距数据集
+├── dis_measure_STM32/          # STM32 端侧测距系统
+│   ├── BS21E/                  # 小熊派 BS21E 发送端固件
+│   ├── Model_SourceCode(Python)/  # Python 模型训练代码
+│   └── STM32H747I-DISCO/       # STM32 接收端项目
 └── web_serve/                  # 网页服务端
     ├── serve.js                # Express 后端
-    └── index.html              # Three.js 前端
+    └── index.html              # Three.js 前端    
 ```
 
 ---
@@ -129,6 +153,7 @@ mindspore_submit/
 | 模块 | 功能 | 文档 |
 |------|------|------|
 | **硬件端** | BearPi-Pico H2821 固件，SLE 测距 + IMU 姿态 | [文档](firmware/README.md) |
+| **STM32 测距端** | 小熊派 BS21E 采集 IQ → STM32 AI 推理 → LCD 显示距离 | [文档](dis_measure_STM32/README.md) |
 | **本地服务端** | IQ 数据处理、坐标计算、跌倒检测 | [文档](local_serve/README.md) |
 | **网页服务端** | 3D 可视化、数据采集、报警展示 | [文档](web_serve/README.md) |
 
@@ -138,9 +163,18 @@ mindspore_submit/
 
 ### 硬件端
 
-- **开发板**: BearPi-Pico H2821
+- **开发板 (主系统)**: BearPi-Pico H2821
 - **通信**: 星闪 (SLE) 无线测距
 - **传感器**: 六轴 IMU
+
+### STM32 端侧测距系统
+
+- **发送端 MCU**: 小熊派 BS21E (HiSilicon BS21E, RISC-V @ 250MHz)
+- **接收端 MCU**: STM32H747XIH6 (Cortex-M7 @ 480MHz + Cortex-M4 @ 240MHz)
+- **AI 推理**: STM32Cube.AI (X-CUBE-AI) 部署量化模型
+- **模型框架**: MindSpore 训练 → ONNX 导出 → STM32Cube AI 转换
+- **LCD 显示**: 4.3" TFT LCD (NT35510), 相位灰度图 + 仪表盘
+- **数据接口**: SLE → UART0 (BS21E) → UART8 (STM32), 115200bps
 
 ### 本地服务端
 
@@ -162,6 +196,7 @@ mindspore_submit/
 | 功能模块 | 描述 |
 |----------|------|
 | **室内定位** | 6 基站 SLE 测距，CNN 预测距离，多重滤波抗多径 |
+| **端侧测距** | STM32 嵌入式 AI，BS21E 采集 IQ → Hankel 变换 → LCD 显示距离 |
 | **跌倒检测** | ResNet 姿态识别 + 位置变化融合判断 |
 | **3D 可视化** | 实时显示老人在房间内的位置和状态 |
 | **数据采集** | 网页引导式测距数据集采集 |
@@ -250,6 +285,8 @@ python train_binary.py
 ## 相关链接
 
 - [硬件端文档](firmware/README.md)
+- [STM32 测距系统文档](dis_measure_STM32/README.md)
 - [本地服务端文档](local_serve/README.md)
 - [网页服务端文档](web_serve/README.md)
 - [BearPi 官方文档](https://www.bearpi.cn/)
+- [STM32H747I-DISCO 官方页面](https://www.st.com/en/evaluation-tools/stm32h747i-disco.html)

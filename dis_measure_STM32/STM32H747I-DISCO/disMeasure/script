@@ -1,0 +1,44 @@
+config load "C:\Users\lps\.stm32cubeaistudio\workspace\disMeasure\disMeasure.ioc"
+project toolchain MDK-ARM
+pack context CortexM7
+project toolchain "MDK-ARM"
+set context CortexM7 RCC
+switch context CortexM7 RCC
+set mode RCC HSE-External-Oscillator
+config save
+set context CortexM7 RCC
+switch context CortexM7 RCC
+set mode RCC LSE-External-Oscillator
+config save
+set ip parameters CORTEX_M7 CPU_ICache Enabled
+set ip parameters CORTEX_M7 CPU_DCache Enabled
+set ip parameters CORTEX_M7 MPU_Control MPU_PRIVILEGED_DEFAULT
+set ip parameters CORTEX_M7 "Enable-Cortex_Memory_Protection_Unit_Region0_Settings" "MPU_REGION_ENABLE"
+set ip parameters CORTEX_M7 "BaseAddress-Cortex_Memory_Protection_Unit_Region0_Settings" "0xD0000000"
+set ip parameters CORTEX_M7 "Size-Cortex_Memory_Protection_Unit_Region0_Settings" "MPU_REGION_SIZE_8MB"
+set ip parameters CORTEX_M7 "AccessPermission-Cortex_Memory_Protection_Unit_Region0_Settings" "MPU_REGION_FULL_ACCESS"
+set ip parameters CORTEX_M7 "DisableExec-Cortex_Memory_Protection_Unit_Region0_Settings" "MPU_INSTRUCTION_ACCESS_ENABLE"
+set ip parameters CORTEX_M7 "IsShareable-Cortex_Memory_Protection_Unit_Region0_Settings" "MPU_ACCESS_NOT_SHAREABLE"
+set ip parameters CORTEX_M7 "IsCacheable-Cortex_Memory_Protection_Unit_Region0_Settings" "MPU_ACCESS_CACHEABLE"
+set ip parameters CORTEX_M7 "IsBufferable-Cortex_Memory_Protection_Unit_Region0_Settings" "MPU_ACCESS_BUFFERABLE"
+set ip parameters CORTEX_M7 "Enable-Cortex_Memory_Protection_Unit_Region1_Settings" "MPU_REGION_ENABLE"
+set ip parameters CORTEX_M7 "BaseAddress-Cortex_Memory_Protection_Unit_Region1_Settings" "0x90000000"
+set ip parameters CORTEX_M7 "Size-Cortex_Memory_Protection_Unit_Region1_Settings" "MPU_REGION_SIZE_128MB"
+set ip parameters CORTEX_M7 "AccessPermission-Cortex_Memory_Protection_Unit_Region1_Settings" "MPU_REGION_FULL_ACCESS"
+set ip parameters CORTEX_M7 "DisableExec-Cortex_Memory_Protection_Unit_Region1_Settings" "MPU_INSTRUCTION_ACCESS_ENABLE"
+set ip parameters CORTEX_M7 "IsShareable-Cortex_Memory_Protection_Unit_Region1_Settings" "MPU_ACCESS_NOT_SHAREABLE"
+set ip parameters CORTEX_M7 "IsCacheable-Cortex_Memory_Protection_Unit_Region1_Settings" "MPU_ACCESS_CACHEABLE"
+set ip parameters CORTEX_M7 "IsBufferable-Cortex_Memory_Protection_Unit_Region1_Settings" "MPU_ACCESS_BUFFERABLE"
+project set stackbycontext M7 0x2000
+project set heapbycontext M7 0x800
+set gpio parameters PA10 GPIO_PuPd GPIO_PULLUP
+set context CortexM7 USART1
+switch context CortexM7 USART1
+set gpio parameters PA10 PinAttribute CortexM7
+set gpio parameters PA9 PinAttribute CortexM7
+set pin PA10 USART1_RX
+set pin PA9 USART1_TX
+set mode USART1 Asynchronous
+config save
+set ip parameters USART1 BaudRate 115200
+set gpio parameters PA10 GPIO_PuPd GPIO_PULLUP

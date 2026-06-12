@@ -1,0 +1,19 @@
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin'
+Build target 'disMeasure_CM7'
+Note: source file '../CM7/Core/Src/main.c' - object file renamed from 'disMeasure_CM7\main.o' to 'disMeasure_CM7\main_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_it.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_it.o' to 'disMeasure_CM7\stm32h7xx_it_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_hal_msp.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_hal_msp.o' to 'disMeasure_CM7\stm32h7xx_hal_msp_1.o'.compiling app_x-cube-ai.c...
+..\CM7\AI\App\multi_test.h(1236): warning:  #1-D: last line of file ends without a newline
+  };
+..\CM7\AI\App\app_x-cube-ai.c(198): warning:  #550-D: variable "ret_code"  was set but never used
+    stai_return_code ret_code;
+..\CM7\AI\App\app_x-cube-ai.c(402): error:  #20: identifier "PMAP_W" is undefined
+    hdma2d.Init.OutputOffset = 480 - PMAP_W;
+..\CM7\AI\App\app_x-cube-ai.c(410): error:  #20: identifier "PMAP_H" is undefined
+      PMAP_W, PMAP_H);
+..\CM7\AI\App\app_x-cube-ai.c(667): warning:  #870-D: invalid multibyte character sequence
+      UTIL_LCD_DisplayStringAt(430, LINE(5), (uint8_t *)"AI not ready â€? skip test", LEFT_MODE);
+..\CM7\AI\App\app_x-cube-ai.c(213): warning:  #177-D: function "copy_weights_to_sdram"  was declared but never referenced
+  static int copy_weights_to_sdram(void)
+..\CM7\AI\App\app_x-cube-ai.c: 4 warnings, 2 errors
+"disMeasure_CM7\disMeasure_CM7.axf" - 2 Error(s), 4 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:05

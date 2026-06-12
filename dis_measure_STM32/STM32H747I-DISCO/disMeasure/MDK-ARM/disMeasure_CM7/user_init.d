@@ -1,0 +1,9 @@
+dismeasure_cm7\user_init.o: ..\CM7\AI\App\user_init.c
+dismeasure_cm7\user_init.o: ..\CM7\AI\App\user_init.h
+dismeasure_cm7\user_init.o: ..\CM7\AI\App\network.h
+dismeasure_cm7\user_init.o: ..\Middlewares\ST\AI\Inc\stai.h
+dismeasure_cm7\user_init.o: C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
+dismeasure_cm7\user_init.o: C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stddef.h
+dismeasure_cm7\user_init.o: C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdbool.h
+dismeasure_cm7\user_init.o: ..\Middlewares\ST\AI\Inc\stai_debug.h
+dismeasure_cm7\user_init.o: C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h

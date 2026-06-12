@@ -1,0 +1,10 @@
+dismeasure_cm7\network_weights.o: ..\CM7\AI\App\network_weights.c
+dismeasure_cm7\network_weights.o: C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
+dismeasure_cm7\network_weights.o: C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h
+dismeasure_cm7\network_weights.o: ..\Middlewares\ST\AI\Inc\ai_datatypes_defines.h
+dismeasure_cm7\network_weights.o: ..\Middlewares\ST\AI\Inc\ai_platform.h
+dismeasure_cm7\network_weights.o: C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stddef.h
+dismeasure_cm7\network_weights.o: C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\inttypes.h
+dismeasure_cm7\network_weights.o: C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdbool.h
+dismeasure_cm7\network_weights.o: ..\Middlewares\ST\AI\Inc\core_assert.h
+dismeasure_cm7\network_weights.o: ..\CM7\AI\App\network_weights.h

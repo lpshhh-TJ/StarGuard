@@ -1,0 +1,21 @@
+{
+  "toolchain": "MDK-ARM",
+  "variant": "ApplicationTemplate",
+  "fromMx": false,
+  "isGenerated": true,
+  "name": "disMeasure",
+  "createdAt": 1780663640970,
+  "lastModified": 1780678177895,
+  "lastAccessed": 1780678177895,
+  "path": "C:\\Users\\lps\\.stm32cubeaistudio\\workspace",
+  "board": "STM32H747I-DISCO",
+  "mcu": "",
+  "type": "BYOM",
+  "lastGenerationRunId": "run-14",
+  "context": "CortexM7",
+  "uartInstance": {
+    "usart": "USART1",
+    "rxpin": "PA10",
+    "txpin": "PA9"
+  }
+}

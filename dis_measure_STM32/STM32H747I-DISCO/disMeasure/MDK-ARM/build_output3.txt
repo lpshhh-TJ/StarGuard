@@ -1,0 +1,13 @@
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Users\lps\AppData\Local\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin'
+Build target 'disMeasure_CM7'
+Note: source file '../CM7/Core/Src/main.c' - object file renamed from 'disMeasure_CM7\main.o' to 'disMeasure_CM7\main_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_it.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_it.o' to 'disMeasure_CM7\stm32h7xx_it_1.o'.Note: source file '../CM7/Core/Src/stm32h7xx_hal_msp.c' - object file renamed from 'disMeasure_CM7\stm32h7xx_hal_msp.o' to 'disMeasure_CM7\stm32h7xx_hal_msp_1.o'.compiling app_x-cube-ai.c...
+..\CM7\AI\App\app_x-cube-ai.c(172): warning:  #550-D: variable "ret_code"  was set but never used
+    stai_return_code ret_code;
+..\CM7\AI\App\app_x-cube-ai.c(476): error:  #20: identifier "ai_ready" is undefined
+        else if(!ai_ready)
+..\CM7\AI\App\app_x-cube-ai.c(501): warning:  #550-D: variable "ai_ready"  was set but never used
+  static int ai_ready = 0;
+..\CM7\AI\App\app_x-cube-ai.c: 2 warnings, 1 error
+"disMeasure_CM7\disMeasure_CM7.axf" - 1 Error(s), 2 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:05
