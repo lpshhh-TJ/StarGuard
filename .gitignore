@@ -1,0 +1,23 @@
+# STM32 AI 模型生成输出（大文件）
+dis_measure_STM32/**/.ai/
+**/.ai/
+
+# 模型权重文件（二进制大文件）
+*.ckpt
+*.h5
+*.pth
+*.pt
+*.onnx
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE 配置
+.vscode/
+.idea/
+
+# OS 文件
+Thumbs.db
+.DS_Store
